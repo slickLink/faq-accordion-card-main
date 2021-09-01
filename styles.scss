@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+//background colors
+$bg_soft_violet: hsl(273, 75%, 66%);
+$bg_soft_blue: hsl(240, 73%, 65%);
+
+//text colors
+$text_dark: hsl(237, 12%, 33%);
+$text_light: hsl(240, 6%, 50%);
+$soft_red: hsl(14, 88%, 65%);
+
+// divider
+$divider_color: hsl(240, 5%, 91%);
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 12px;
+}
+
+body {
+    background-image: linear-gradient($bg_soft_violet, $bg_soft_blue);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+img {
+    width: 100%;
+}
+
+.faq-card {
+    margin: 12em 0 auto;
+    flex: 0 0 27em;
+    background-color: white;
+    border-radius: 20px;
+    .faq-img-container { // illustrations
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: no-repeat top -35% left 50% url(./images/bg-pattern-mobile.svg);
+        background-size: 70%;
+        #cube {
+            width: 30%;
+            position: relative;
+            z-index: 1;
+            top: -3.5em;
+            left: -6.5em;
+        }
+        .overflow-image { // woman svg container
+            margin-top: -16.5em;
+            margin-bottom: 3em;
+            width: 70%;
+        }
+    } 
+
+    .faq-content { //FAQ question and answer container
+        margin: 2em 2em 4em 2em;
+
+        h2 { // FAQ card title
+
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 1em;
+        } 
+
+        .faq-content-item {
+            margin: 1em 0;
+            border-bottom: 1px solid $divider_color;
+
+            .question-wrapper { // clickable link container
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 1em;
+                
+                text-decoration: none;
+                color: $text_dark;
+
+                :hover {
+                    color: $soft_red;
+                }
+
+                // flex items
+                .faq-content-question {
+                    flex: 1 0 95%;
+
+                    margin-bottom: 0.5em;
+                }
+
+                .arrow {
+                    flex: 0 1 5%;
+                    content: url(./images/icon-arrow-down.svg);
+                }
+            }
+
+            .faq-content-answer { // FAQ answer <p>
+                display: none;
+                margin: 0em 3em 1em 0;
+                color: $text_light;
+
+            }
+            
+        }
+        // css only toggle using :target
+        :target {
+            .faq-content-question { // clicked question
+                color: black;
+                font-weight: 700;
+            }
+            .arrow {
+                transform: scaleY(-1);
+            }
+            .faq-content-answer {
+                display: block;
+            }
+        }
+        
+    } 
+    
+}
+
+@media (min-width: 950px) { // Larger screens
+    .faq-card {
+        flex:0 1 76.5em;
+        display: flex;
+        margin: 0 1.5em;
+
+        .faq-card-item {
+            flex: 0 0 45%;
+        }
+
+        .faq-img-container { // illustrations
+            margin: 0;
+            background: no-repeat left 108% top 65%url(./images/bg-pattern-desktop.svg);
+            #cube {
+                width: 40%;
+                top: 19.5em;
+                left: -17em;
+            }
+            .overflow-image { // woman svg container
+                margin-top: -4em;
+                margin-bottom: 0;
+                width: 100%;
+                overflow: hidden;
+
+                img {
+                    margin-left: -5.5em;
+                    width: 105%;
+                }
+            }
+        }
+
+        .faq-content { //FAQ question and answer container
+            display: flex;
+            flex-direction: column;
+            padding-right: 3em;
+
+            h2 { // FAQ card title
+                text-align: left;
+                margin-top: 1em;
+            }
+
+            .faq-content-item { // clickable link container
+                .question-wrapper {
+                    .faq-content-question {
+                        flex-basis: 97%;
+                    }
+                    .arrow {
+                        flex-basis: 3%;
+                    }
+                }
+            }
+        }
+    }
+}
