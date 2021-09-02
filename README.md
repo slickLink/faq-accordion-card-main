@@ -105,7 +105,7 @@ The <a> tag links the outer div with id "question1". I did this so could select 
 ### Continued development
 
 - keep solidifying my knowledge in css and html 
-- eager to learn Grip
+- eager to learn Grid
 - Develop a sense of when to use Grid and/or Flexbox
 
 ### Useful resources
