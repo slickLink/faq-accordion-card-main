@@ -1,93 +1,118 @@
-# Frontend Mentor - FAQ accordion card
+# Frontend Mentor - FAQ accordion card solution
 
-![Design preview for the FAQ accordion card coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [FAQ accordion card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/faq-accordion-card-XlyjD0Oam). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this FAQ accordion card and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the component depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Hide/Show the answer to a question when the question is clicked
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![Mobile](./screenshot_mobile.png)
+![Desktop](./screenshot_desktop.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- Solution URL: [Code solution](https://github.com/slickLink/faq-accordion-card-main)
+- Live Site URL: [Live site](https://faq-accordion-card-main-solution.netlify.app/)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+### Built with
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+- Semantic HTML5 markup
+- SCSS
+- Flexbox
+- Mobile-first workflow
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
 
-## Building your project
+**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### What I learned
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+- overflow css property:
+The child nodes of any parent element with a overflow property cannot overide its behavior.
+```html
+<div class="container">
+  <img src="/images/example.png" alt="example img">
+</div>
+```
+```scss
+.container {
+  overflow: hidden;
+  img {
+    width: 100%
+    margin-left: -20em; 
+  }
+}
+// image will be cut off at the left border of the div
+```
 
-## Deploying your project
+- :target css selector:
+URLs with an # followed by an anchor name link a certain element within the document. the element being linked to is the :target element.
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+Example from this project
+```html
+<div id="question1" class="faq-content-item">
+  <a href="#question1" class="question-wrapper">
+      <p class="faq-content-question">How many team members can I invite?</p>
+      <img class="arrow" alt="up/down arrow toggle">
+  </a>
+  <p class="faq-content-answer">You can invite up to 2 additional users on the Free plan. There is no limit on 
+      team members for the Premium plan.</p>
+</div> <!--FAQ question and answer item-->
+```
+The <a> tag links the outer div with id "question1". I did this so could select the elements inside .faq-content-item with css and create a toggle without using js :)
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+*Note: not entire code only important parts for sample*
+```scss
+.faq-content-answer { // FAQ answer <p>
+  display: none;
+  margin: 0em 3em 1em 0;
+  color: $text_light;
+}
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+// css only toggle using :target
+:target {
+    .faq-content-question { // clicked question
+        color: black;
+        font-weight: 700;
+    }
+    .arrow {
+        transform: scaleY(-1);
+    }
+    .faq-content-answer {
+        display: block;
+    }
+}
+```
+### Continued development
 
-## Create a custom `README.md`
+- keep solidifying my knowledge in css and html 
+- eager to learn Grip
+- Develop a sense of when to use Grid and/or Flexbox
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+### Useful resources
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+- [MDN](https://developer.mozilla.org/en-US/) - Probably the best resource out there
+- [w3schools.com](https://www.w3schools.com/cssref/sel_target.asp) - Certified Gold
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+## Author
 
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Frontend Mentor - [@slickLink](https://www.frontendmentor.io/profile/slickLink)
